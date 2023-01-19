@@ -27,7 +27,7 @@
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
-    }
+    };
 
     behaviors {
         ht: hold_tap {
