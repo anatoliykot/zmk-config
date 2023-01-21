@@ -5,6 +5,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
 
 // Home row mods macro
 #define HRML(k2,k3,k4) &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
@@ -28,6 +29,12 @@
             timeout-ms = <50>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
+        };
+
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <5 6>;
+            bindings = <&kp TAB>;
         };
     };
 
@@ -124,18 +131,18 @@
 
         tri_layer {
             bindings = <
-        //╭──────────┬──────────┬──────────┬───────────┬────────────╮   ╭────────────┬────────────┬──────────┬───────────┬──────────╮
-        //│  F1      │  F2      │  F3      │  F4       │ PROFILE 0  │   │ PROFILE 2  │ TOGGLEOUT  │ WINDOWS  │ VOL MUTE  │ NEXTSONG │
-            &kp F1     &kp F2     &kp F3     &kp F4     &bt BT_SEL 0     &bt BT_SEL 2  &out OUT_TOG &tog WIN  &kp C_MUTE  &kp C_NEXT
-        //├──────────┼──────────┼──────────┼───────────┼────────────┤   ├────────────┼────────────┼──────────┼───────────┼──────────┤
-        //│  F5      │  F6      │  F7      │  F8       │ PROFILE 1  │   │ PROFILE 3  │ INC BRIGHT │          │  VOL UP   │PAUSEMUSIC│
-            &kp F5     &kp F6     &kp F7     &kp F8     &bt BT_SEL 1     &bt BT_SEL 3  &kp C_BRI_UP  &trans   &kp C_VOL_UP  &kp C_PP
-        //├──────────┼──────────┼──────────┼───────────┼────────────┤   ├────────────┼────────────┼──────────┼───────────┼──────────┤
-        //│  F9      │  F10     │  F11     │  F12      │  CLEAR BT  │   │ PROFILE 4  │ DEC BRIGHT │          |  VOL DOWN │ PREVSONG │
-            &kp F9     &kp F10    &kp F11    &kp F12     &bt BT_CLR      &bt BT_SEL 4  &kp C_BRI_DEC  &trans   &kp C_VOL_DN &kp C_PREV
-        //╰──────────┴──────────┴──────────┼───────────┼────────────┤   ├────────────┼────────────┼──────────┴───────────┴──────────╯
-                                                &trans     &trans         &trans     &trans
-        //                                  ╰───────────┴──────────╯   ╰──────────┴────────────╯
+        //╭───────────────┬───────────────┬───────────────┬────────────────┬───────────────╮   ╭────────────┬────────────┬──────────┬───────────┬──────────╮
+        //│RGB on/off     │               │               │                │               │   │  PROFILE 0 │ TOGGLEOUT  │ WINDOWS  │ VOL MUTE  │ NEXTSONG │
+           &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI  &rgb_ug RGB_SPI     &bt BT_SEL 0  &out OUT_TOG &tog WIN  &kp C_MUTE  &kp C_NEXT
+        //├───────────────┼───────────────┼───────────────┼────────────────┼───────────────┤   ├────────────┼────────────┼──────────┼───────────┼──────────┤
+        //│  F5           │               │               │                │               │   │ PROFILE 1  │ INC BRIGHT │          │  VOL UP   │PAUSEMUSIC│
+           &rgb_ug RGB_EFF &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD  &rgb_ug RGB_SPD     &bt BT_SEL 1  &kp C_BRI_UP  &trans   &kp C_VOL_UP  &kp C_PP
+        //├───────────────┼───────────────┼───────────────┼────────────────┼───────────────┤   ├────────────┼────────────┼──────────┼───────────┼──────────┤
+        //│  F9           │  F10          │  F11          │  F12           │  CLEAR BT     │   │            │ DEC BRIGHT │          |  VOL DOWN │ PREVSONG │
+           &rgb_ug RGB_EFR   &kp F10         &kp F11         &kp F12          &bt BT_CLR         &trans       &kp C_BRI_DEC  &trans   &kp C_VOL_DN &kp C_PREV
+        //╰───────────────┴───────────────┴───────────────┼────────────────┼───────────────┤   ├────────────┼────────────┼──────────┴───────────┴──────────╯
+                                                                &trans         &trans              &trans       &trans
+        //                                                ╰────────────────┴───────────────╯   ╰────────────┴────────────╯
             >;
         };
     };
