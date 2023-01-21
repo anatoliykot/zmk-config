@@ -18,11 +18,9 @@
 #define LEF 3
 #define TRI 4
 
-/ {
-    chosen {
-        zmk,backlight = &backlight;
-    };
+&led_strip { chain-length = <23>; };
 
+/ {
     combos {
         compatible = "zmk,combos";
 
