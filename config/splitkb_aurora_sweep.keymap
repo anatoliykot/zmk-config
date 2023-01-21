@@ -19,6 +19,10 @@
 #define TRI 4
 
 / {
+    chosen {
+        zmk,backlight = &backlight;
+    };
+
     combos {
         compatible = "zmk,combos";
 
