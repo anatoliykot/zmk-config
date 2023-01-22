@@ -8,10 +8,10 @@
 #include <dt-bindings/zmk/rgb.h>
 
 // Home row mods macro
-#define HRML(k2,k3,k4) &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
-#define HRMR(k1,k2,k3) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3
-#define WHRML(k2,k3,k4) &ht LALT k2  &ht LGUI k3  &ht LSHIFT k4
-#define WHRMR(k1,k2,k3) &ht RSHIFT k1  &ht RGUI k2  &ht RALT k3
+#define HRML(k2,k3,k4) &ht LGUI k2  &ht LALT k3  &ht LSHIFT k4
+#define HRMR(k1,k2,k3) &ht RSHIFT k1  &ht RALT k2  &ht RGUI k3
+#define WHRML(k2,k3,k4) &ht LGUI k2  &ht LALT k3  &ht LSHIFT k4
+#define WHRMR(k1,k2,k3) &ht RSHIFT k1  &ht RALT k2  &ht RGUI k3
 
 #define MAC 0
 #define WIN 1
@@ -31,6 +31,25 @@
             bindings = <&kp ESC>;
         };
 
+        combo_toggle_app {
+            timeout-ms = <50>;
+            key-positions = <5 6>;
+            bindings = <&alt_tab>;
+        };
+
+    };
+
+    macros {
+        alt_tab: alt_tab {
+            label = "alt_tab";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp TAB>
+                , <&macro_release &kp LALT>
+                ;
+        };
     };
 
     behaviors {
@@ -43,14 +62,6 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
-        };
-
-        atab: a_tab {
-            compatible = "zmk,behavior-mod-morph";
-            label = "A_TAB";
-            #binding-cells = <0>;
-            bindings = <&kp A>, <&kp TAB>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
         };
     };
 
@@ -71,12 +82,12 @@
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │BACKSPACE │
-            &atab      HRML(S,         D,         F)     &kp G          &kp H      HRMR(J,        K,           L)   &kp BSPC
+            &kp A      HRML(S,         D,         F)     &kp G          &kp H      HRMR(J,        K,           L)   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                           &kp LCTRL  &lt LEF TAB   &lt RIG SPACE &lt RIG RSHIFT
+                                     &ht LCTRL TAB  &lt LEF LSHIFT   &lt RIG SPACE &lt RIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -93,7 +104,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                           &kp LCTRL  &lt LEF TAB   &lt RIG SPACE &lt RIG RSHIFT
+                                     &ht LCTRL TAB  &lt LEF LSHIFT   &lt RIG SPACE &lt RIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
