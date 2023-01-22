@@ -33,7 +33,7 @@
 
         combo_toggle_app {
             timeout-ms = <50>;
-            key-positions = <5 6>;
+            key-positions = <10 11>;
             bindings = <&alt_tab>;
         };
 
