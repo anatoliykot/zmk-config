@@ -31,11 +31,6 @@
             bindings = <&kp ESC>;
         };
 
-        combo_tab {
-            timeout-ms = <50>;
-            key-positions = <5 6>;
-            bindings = <&kp TAB>;
-        };
     };
 
     behaviors {
@@ -48,6 +43,14 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
+        };
+
+        atab: a_tab {
+            compatible = "zmk,behavior-mod-morph";
+            label = "A_TAB";
+            #binding-cells = <0>;
+            bindings = <&kp A>, <&kp TAB>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
         };
     };
 
@@ -68,7 +71,7 @@
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │BACKSPACE │
-            &kp A     HRML(S,         D,         F)     &kp G          &kp H      HRMR(J,        K,           L)   &kp BSPC
+            &atab      HRML(S,         D,         F)     &kp G          &kp H      HRMR(J,        K,           L)   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
