@@ -31,7 +31,7 @@
             bindings = <&kp ESC>;
         };
 
-        combo_esc {
+        combo_tab {
             timeout-ms = <50>;
             key-positions = <5 6>;
             bindings = <&kp TAB>;
@@ -73,7 +73,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                           &lt LEF TAB  &kp LSHIFT    &kp SPACE  &lt RIG TAB
+                                           &kp LCTRL  &lt LEF TAB   &lt RIG SPACE &lt RIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -90,7 +90,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &kp LCTRL  &lt LEF TAB   &lt RIG SPACE &lt RIG RSHIFT
+                                           &kp LCTRL  &lt LEF TAB   &lt RIG SPACE &lt RIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
