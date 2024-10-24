@@ -10,13 +10,11 @@
 // Home row mods macro
 #define HRML(k2,k3,k4) &ht LGUI k2  &ht LALT k3  &ht LSHIFT k4
 #define HRMR(k1,k2,k3) &ht RSHIFT k1  &ht RALT k2  &ht RGUI k3
-#define WHRML(k2,k3,k4) &ht LGUI k2  &ht LALT k3  &ht LSHIFT k4
-#define WHRMR(k1,k2,k3) &ht RSHIFT k1  &ht RALT k2  &ht RGUI k3
 
-#define LAYDEF 0
-#define LAYRIG 1
-#define LAYLEF 2
-#define LAYTRI 3
+#define LAY_DEF 0
+#define LAY_RIG 1
+#define LAY_LEF 2
+#define LAY_TRI 3
 
 &led_strip { chain-length = <23>; };
 
@@ -67,8 +65,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            if-layers = <LAYRIG LAYLEF>;
-            then-layer = <LAYTRI>;
+            if-layers = <LAY_RIG LAY_LEF>;
+            then-layer = <LAY_TRI>;
         };
     };
 
@@ -86,7 +84,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                        &kp LGUI   &lt LAYLEF TAB   &lt LAYRIG SPACE &lt LAYRIG RSHIFT
+                                        &kp LGUI   &lt LAY_LEF TAB   &lt LAY_RIG SPACE &lt LAY_RIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -128,8 +126,8 @@
         tri_layer {
             bindings = <
         //╭───────────────┬───────────────┬───────────────┬────────────────┬───────────────╮   ╭────────────┬────────────┬──────────┬───────────┬──────────╮
-        //│RGB on/off     │               │               │                │               │   │  PROFILE 0 │ TOGGLEOUT  │ WINDOWS  │ VOL MUTE  │ NEXTSONG │
-           &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI  &rgb_ug RGB_SPI     &bt BT_SEL 0  &out OUT_TOG &tog WIN  &kp C_MUTE  &kp C_NEXT
+        //│RGB on/off     │               │               │                │               │   │  PROFILE 0 │ TOGGLEOUT  │          │ VOL MUTE  │ NEXTSONG │
+           &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI  &rgb_ug RGB_SPI     &bt BT_SEL 0  &out OUT_TOG &trans    &kp C_MUTE  &kp C_NEXT
         //├───────────────┼───────────────┼───────────────┼────────────────┼───────────────┤   ├────────────┼────────────┼──────────┼───────────┼──────────┤
         //│  F5           │               │               │                │               │   │ PROFILE 1  │ INC BRIGHT │          │  VOL UP   │PAUSEMUSIC│
            &rgb_ug RGB_EFF &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD  &rgb_ug RGB_SPD     &bt BT_SEL 1  &kp C_BRI_UP  &trans   &kp C_VOL_UP  &kp C_PP
