@@ -13,10 +13,10 @@
 #define WHRML(k2,k3,k4) &ht LGUI k2  &ht LALT k3  &ht LSHIFT k4
 #define WHRMR(k1,k2,k3) &ht RSHIFT k1  &ht RALT k2  &ht RGUI k3
 
-#define LAY_DEF 0
-#define LAY_RIG 1
-#define LAY_LEF 2
-#define LAY_TRI 3
+#define LAYDEF 0
+#define LAYRIG 1
+#define LAYLEF 2
+#define LAYTRI 3
 
 &led_strip { chain-length = <23>; };
 
@@ -67,8 +67,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            if-layers = <LAY_RIG LAY_LEF>;
-            then-layer = <LAY_TRI>;
+            if-layers = <LAYRIG LAYLEF>;
+            then-layer = <LAYTRI>;
         };
     };
 
@@ -86,7 +86,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                        &kp LGUI   &lt LAY_LEF TAB   &lt LAY_RIG SPACE &lt LAY_RIG RSHIFT
+                                        &kp LGUI   &lt LAYLEF TAB   &lt LAYRIG SPACE &lt LAYRIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
