@@ -13,11 +13,10 @@
 #define WHRML(k2,k3,k4) &ht LGUI k2  &ht LALT k3  &ht LSHIFT k4
 #define WHRMR(k1,k2,k3) &ht RSHIFT k1  &ht RALT k2  &ht RGUI k3
 
-#define MAC 0
-#define WIN 1
-#define RIG 2
-#define LEF 3
-#define TRI 4
+#define LAY_DEF 0
+#define LAY_RIG 1
+#define LAY_LEF 2
+#define LAY_TRI 3
 
 &led_strip { chain-length = <23>; };
 
@@ -68,8 +67,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            if-layers = <RIG LEF>;
-            then-layer = <TRI>;
+            if-layers = <LAY_RIG LAY_LEF>;
+            then-layer = <LAY_TRI>;
         };
     };
 
@@ -87,24 +86,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                           &kp LGUI  &lt LEF TAB    &lt RIG SPACE &lt RIG RSHIFT
-        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
-
-        windows_layer {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │BACKSPACE │
-            &kp A    WHRML(S,         D,         F)     &kp G          &kp H      WHRMR(J,        K,         L)   &kp BSPC
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
-            &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                           &kp LCTRL  &lt LEF TAB    &lt RIG SPACE &lt RIG RSHIFT
+                                        &kp LGUI   &lt LAY_LEF TAB   &lt LAY_RIG SPACE &lt LAY_RIG RSHIFT
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -152,8 +134,8 @@
         //│  F5           │               │               │                │               │   │ PROFILE 1  │ INC BRIGHT │          │  VOL UP   │PAUSEMUSIC│
            &rgb_ug RGB_EFF &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD  &rgb_ug RGB_SPD     &bt BT_SEL 1  &kp C_BRI_UP  &trans   &kp C_VOL_UP  &kp C_PP
         //├───────────────┼───────────────┼───────────────┼────────────────┼───────────────┤   ├────────────┼────────────┼──────────┼───────────┼──────────┤
-        //│  F9           │  F10          │  F11          │  F12           │  CLEAR BT     │   │            │ DEC BRIGHT │          |  VOL DOWN │ PREVSONG │
-           &rgb_ug RGB_EFR   &kp F10         &kp F11         &kp F12          &bt BT_CLR         &trans       &kp C_BRI_DEC  &trans   &kp C_VOL_DN &kp C_PREV
+        //│  F9           │ Unlock studio │  F11          │  F12           │  CLEAR BT     │   │            │ DEC BRIGHT │          |  VOL DOWN │ PREVSONG │
+           &rgb_ug RGB_EFR  &studio_unlock   &kp F11         &kp F12          &bt BT_CLR         &trans       &kp C_BRI_DEC  &trans   &kp C_VOL_DN &kp C_PREV
         //╰───────────────┴───────────────┴───────────────┼────────────────┼───────────────┤   ├────────────┼────────────┼──────────┴───────────┴──────────╯
                                                                 &trans         &trans              &trans       &trans
         //                                                ╰────────────────┴───────────────╯   ╰────────────┴────────────╯
